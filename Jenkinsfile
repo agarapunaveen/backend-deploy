@@ -18,17 +18,18 @@ pipeline {
     stages {
         stage('print the version'){
             steps{
-
               script { 
                 echo "application version:${params.appVersion}"               
                 }
             }
+        }
             stage('init'){
-            steps{
-               sh """
-                 cd terraform
-                 terraform init
-               """
+                steps{
+                sh """
+                    cd terraform
+                    terraform init
+                """
+                }
             }
              stage('plan'){
                 steps{
@@ -37,7 +38,7 @@ pipeline {
                     terraform plan -var="app_version=${params.appVersion}"
                 """
                 }
-        } 
+             } 
     }
         post {
             always{
