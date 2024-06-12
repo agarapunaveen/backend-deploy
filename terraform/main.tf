@@ -30,7 +30,7 @@ provisioner "file" {
 provisioner "remote-exec" { 
   inline = [ 
     "chmod +x /tmp/${var.comman_tags.Component}.sh",
-    "sudo sh /tmp/${var.comman_tags.Component}.sh ${var.comman_tags.Component} ${var.environment}"
+    "sudo sh /tmp/${var.comman_tags.Component}.sh ${var.comman_tags.Component} ${var.environment} ${var.app_version}"
    ]
 }
 
